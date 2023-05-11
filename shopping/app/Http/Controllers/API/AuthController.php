@@ -54,6 +54,9 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+       
+       
+       
         $validator = Validator::make($request->all(), [
             'email'=>'required|max:191',
             'password'=>'required',
@@ -115,9 +118,11 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return response()
+    ->json(['name' => 'Abigail', 'state' => 'CA'])
+    ->setCallback($request->input('callback'));
     }
 
     /**
